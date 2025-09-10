@@ -1,329 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lenovo Login</title>
-<script type="module" >
-      import ServiceNowChat from "https://lenovoco1temppov.service-now.com/uxasset/externals/now-requestor-chat-popover-app/index.jsdbx?sysparm_substitute=false";
-      var chat = new ServiceNowChat({
-  "instance": "https://lenovoco1temppov.service-now.com",
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lenovo Login</title>
+  <script type="module">
+    //https://lenovoco1temppov.service-now.com/$sn-va-web-client-app.do?sysparm_branding_key=care_of_one%E2%84%A2&sysparm_discoverable=true&sysparm_global_context_profile=e13840cf77d53110569156391e5a99ba&sysparm_global_preview_debug=true&sysparm_nowassist=true&sysparm_skip_load_history=true
+    import ServiceNowChat from "https://lenovoco1temppov.service-now.com/uxasset/externals/now-requestor-chat-popover-app/index.jsdbx?sysparm_substitute=false";
+    var chat = new ServiceNowChat({
+      "instance": "https://lenovoco1temppov.service-now.com",
 
-  "branding": {
-    "bgColor": "#b92632",          // tall-poppy (button background)
-    "primaryColor": "#cccfd9",     // ghost (font color)
-    "hoverColor": "#681321",       // cherrywood (hover background)
-    "activeColor": "#160f48",      // violet (active background)
-  },
-}
-);
-    </script>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #040620;
-    background-image: 
-      radial-gradient(ellipse at top, #0a1c45 0%, transparent 70%),
-      radial-gradient(circle at right bottom, #4b1c91 15%, transparent 70%),
-      linear-gradient(126deg, #0b0d25 30%, #1c0a33 80%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;   /* centers vertically */
-    justify-content: center; /* centers horizontally */
-    padding: 1.5rem;
-    color: #f0f4ff;
-  }
-
-  .swirl-bg {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('https://img.freepik.com/free-vector/abstract-pink-neon-light-wave-with-glow-effect_107791-29964.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center/cover;
-    opacity: 0.35;
-    z-index: 0;
-    pointer-events: none;
-    filter: drop-shadow(0 0 12px #934fbe);
-  }
-
-  @keyframes swirlMove {
-    from { transform: scale(1) translateY(0px); }
-    to { transform: scale(1.05) translateY(-15px); }
-  }
-
-  /* ✅ renamed from .container to .login-container */
-  .login-container {
-    position: relative;
-    width: 100%;              /* Always take full available width */
-    max-width: 480px;         /* But never exceed 480px */
-    margin: auto;             /* Center horizontally */
-    background: rgba(8, 11, 35, 0.65);
-    border-radius: 12px;
-    backdrop-filter: blur(12px);
-    box-shadow:
-      0 0 25px rgb(24 15 51 / 0.4),
-      inset 0 0 30px rgb(42 24 86 / 0.7);
-    padding: 2rem 2.5rem 3rem;
-    z-index: 1;
-  }
-
-  .header-logo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  .logo-box {
-    background: #e1141e;
-    padding: 0.3rem 1rem 0.1rem 1rem;
-    font-weight: bold;
-    font-size: 1.4rem;
-    line-height: 1.1;
-    color: white;
-    border-radius: 2px;
-    user-select: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  .logo-text {
-    margin-left: 0.8rem;
-    font-weight: 500;
-    font-size: 1.1rem;
-    white-space: nowrap;
-    user-select: none;
-  }
-  h2 {
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-  }
-  p.subtitle {
-    font-weight: 400;
-    font-size: 0.925rem;
-    color: #aab2ff;
-    margin-top: 0;
-    margin-bottom: 1.25rem;
-  }
-  form label {
-    display: block;
-    font-size: 0.85rem;
-    margin-bottom: 0.35rem;
-    color: #bcc3e7;
-    font-weight: 600;
-  }
-  .input-group {
-    position: relative;
-    margin-bottom: 1.25rem;
-  }
-  .input-icon {
-    position: absolute;
-    top: 50%;
-    left: 12px;
-    transform: translateY(-50%);
-    stroke: #9aa4c8;
-    width: 18px;
-    height: 18px;
-    pointer-events: none;
-  }
-  input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px 12px 10px 36px;
-    border-radius: 6px;
-    border: 1.5px solid #3a3e62;
-    background-color: #0a0e2f;
-    color: #e0e8ff;
-    font-size: 1rem;
-    outline-offset: 2px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-  }
-  input[type="text"]::placeholder,
-  input[type="password"]::placeholder {
-    color: #5e68a7;
-    font-weight: 400;
-  }
-  input[type="text"]:focus,
-  input[type="password"]:focus {
-    border-color: #757aff;
-    background-color: #121941;
-    box-shadow: 0 0 8px #5967ff99;
-  }
-  .verification-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-  }
-  .verification-input-group {
-    flex: 1;
-    position: relative;
-  }
-  .verification-code {
-    flex-shrink: 0;
-    display: inline-block;
-    background: #191b3f;
-    color: #d7dbe8;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    user-select: none;
-    cursor: default;
-    box-shadow: inset 0 0 8px #471b5a9c;
-    font-family: 'Courier New', Courier, monospace;
-  }
-  button.login-btn {
-    width: 100%;
-    margin-top: 0.75rem;
-    background: linear-gradient(90deg, #cd3146, #651b33);
-    border: none;
-    border-radius: 6px;
-    padding: 12px 0;
-    font-weight: 600;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 6px 12px #8d3b59cc;
-    transition: background 0.4s ease;
-  }
-  button.login-btn:hover,
-  button.login-btn:focus {
-    background: linear-gradient(90deg, #e1485f, #7a2346);
-    outline: none;
-  }
-  button.login-btn svg {
-    stroke: white;
-    width: 20px;
-    height: 20px;
-  }
-</style>
-</head>
-<body>
-<!-- Navbar -->
-<nav class="fixed top-0 left-0 w-full bg-[#0a0e2f]/80 backdrop-blur-md border-b border-gray-700 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Left: Logo -->
-      <div class="flex items-center">
-        <div class="bg-red-600 text-white font-bold text-xl px-2 py-1 rounded-sm">Lenovo</div>
-      </div>
-      <!-- Right: Pages + Button -->
-      <div class="flex items-center space-x-6">
-        <a href="#" class="text-gray-200 hover:text-white font-medium">Home</a>
-        <a href="#" class="text-gray-200 hover:text-white font-medium">About</a>
-        <a href="#" class="text-gray-200 hover:text-white font-medium">Support</a>
-        <a href="#" class="text-gray-200 hover:text-white font-medium">Contact</a>
-        <button class="bg-gradient-to-r from-red-500 to-red-700 text-white px-4 py-2 rounded-lg shadow hover:from-red-600 hover:to-red-800">
-          Sign Up
-        </button>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<div class="swirl-bg" aria-hidden="true"></div>
-
-<div class="login-container mt-20" role="main" aria-label="Lenovo login form container">
-  <header class="header-logo" aria-label="Lenovo logo and Care of One text">
-    <div class="logo-box" aria-hidden="true">Lenovo</div>
-    <div class="logo-text">Care of One<span style="font-size: 0.7em; vertical-align: super;">™</span></div>
-  </header>
-  <h2>Lets Get Started!</h2>
-  <p class="subtitle">Sign in to your account to continue</p>
-  <form id="loginForm" novalidate autocomplete="off" aria-describedby="formInstructions">
-    <div class="input-group">
-      <label for="userid">User ID</label>
-      <svg class="input-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M5 21v-2a4 4 0 014-4h6a4 4 0 014 4v2" />
-        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" />
-      </svg>
-      <input type="text" id="userid" name="userid" placeholder="Your User ID" required />
-    </div>
-    <div class="input-group">
-      <label for="password">Password</label>
-      <svg class="input-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2" />
-        <path stroke="currentColor" stroke-width="2" d="M12 7v4" stroke-linecap="round"/>
-      </svg>
-      <input type="password" id="password" name="password" placeholder="Your Password" required />
-    </div>
-    <div class="input-group verification-wrapper">
-      <div class="verification-input-group">
-        <label for="verification">Verification Code</label>
-        <svg class="input-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke="currentColor" stroke-width="2" d="M3 4h18v2H3V4zM4 6v14h16V6H4z" stroke-linecap="round" />
-          <circle cx="12" cy="14" r="3" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <input type="text" id="verification" name="verification" placeholder="Enter Verification Code" required autocomplete="off" />
-      </div>
-      <div class="verification-code" id="codeDisplay" aria-label="Verification code to enter" tabindex="0">Jd5ds</div>
-    </div>
-    <button class="login-btn" type="submit" aria-label="Login to Lenovo account">
-      <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke="currentColor" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Login
-    </button>
-  </form>
-</div>
+      "branding": {
+        "bgColor": "#b92632",          // tall-poppy (button background)
+        "primaryColor": "#cccfd9",     // ghost (font color)
+        "hoverColor": "#681321",       // cherrywood (hover background)
+        "activeColor": "#160f48",      // violet (active background)
+      },
+    }
+    );
+  </script>
 
 <script>
-(() => {
-  const loginForm = document.getElementById('loginForm');
-  const codeDisplay = document.getElementById('codeDisplay');
-  const verificationInput = loginForm.querySelector('#verification');
+  (function () {
+    const SN_INSTANCE = 'https://lenovoco1temppov.service-now.com';
+    const RETURN_URL = 'https://co-1.vercel.app'; // the page you are on
+    const ALLOWED_ORIGIN = SN_INSTANCE; // only trust messages from your SN instance
 
-  function generateCode(length = 5) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for(let i=0; i<length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-  }
+    window.addEventListener('message', function (e) {
+      // 1) Security: only handle messages from your SN instance
+      if (e.origin !== ALLOWED_ORIGIN) return;
 
-  function setVerificationCode() {
-    const newCode = generateCode(5);
-    codeDisplay.textContent = newCode;
-    codeDisplay.setAttribute('aria-label', `Verification code to enter: ${newCode}`);
-  }
+      const data = e.data || {};
+      const loginUrl =
+        SN_INSTANCE +
+        '/sn_va_web_client_login.do?sysparm_redirect_uri=' +
+        encodeURIComponent(RETURN_URL);
 
-  setVerificationCode();
+      // 2) Session created but not authenticated -> force login
+      if (data.type === 'SESSION_CREATED' && data.authenticated === false) {
+        window.location.href = loginUrl;
+        return;
+      }
 
-  loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const enteredCode = verificationInput.value.trim();
-    if (!loginForm.userid.value.trim()) {
-      alert('Please enter your User ID.');
-      loginForm.userid.focus();
-      return;
-    }
-    if (!loginForm.password.value.trim()) {
-      alert('Please enter your Password.');
-      loginForm.password.focus();
-      return;
-    }
-    if (!enteredCode) {
-      alert('Please enter the Verification Code.');
-      verificationInput.focus();
-      return;
-    }
-    if (enteredCode !== codeDisplay.textContent) {
-      alert('Verification Code does not match. Please try again.');
-      verificationInput.select();
-      return;
-    }
-    alert('Login successful. (This is a demo alert.)');
-    loginForm.reset();
-    setVerificationCode();
-    loginForm.userid.focus();
-  });
-})();
+      // 3) Platform logged out under the client -> re-login
+      if (data.type === 'SESSION_LOGGED_OUT') {
+        window.location.href = loginUrl;
+        return;
+      }
+    });
+  })();
 </script>
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #040620;
+      background-image:
+        radial-gradient(ellipse at top, #0a1c45 0%, transparent 70%),
+        radial-gradient(circle at right bottom, #4b1c91 15%, transparent 70%),
+        linear-gradient(126deg, #0b0d25 30%, #1c0a33 80%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      /* centers vertically */
+      justify-content: center;
+      /* centers horizontally */
+      padding: 1.5rem;
+      color: #f0f4ff;
+    }
+
+    .swirl-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://img.freepik.com/free-vector/abstract-pink-neon-light-wave-with-glow-effect_107791-29964.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center/cover;
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 0 12px #934fbe);
+    }
+
+    @keyframes swirlMove {
+      from {
+        transform: scale(1) translateY(0px);
+      }
+
+      to {
+        transform: scale(1.05) translateY(-15px);
+      }
+    }
+
+    /* ✅ renamed from .container to .login-container */
+    .login-container {
+      position: relative;
+      width: 100%;
+      /* Always take full available width */
+      max-width: 480px;
+      /* But never exceed 480px */
+      margin: auto;
+      /* Center horizontally */
+      background: rgba(8, 11, 35, 0.65);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 0 25px rgb(24 15 51 / 0.4),
+        inset 0 0 30px rgb(42 24 86 / 0.7);
+      padding: 2rem 2.5rem 3rem;
+      z-index: 1;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo-box {
+      background: #e1141e;
+      padding: 0.3rem 1rem 0.1rem 1rem;
+      font-weight: bold;
+      font-size: 1.4rem;
+      line-height: 1.1;
+      color: white;
+      border-radius: 2px;
+      user-select: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .logo-text {
+      margin-left: 0.8rem;
+      font-weight: 500;
+      font-size: 1.1rem;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+    }
+
+    p.subtitle {
+      font-weight: 400;
+      font-size: 0.925rem;
+      color: #aab2ff;
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+    }
+
+    form label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.35rem;
+      color: #bcc3e7;
+      font-weight: 600;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .input-icon {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      stroke: #9aa4c8;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px 10px 36px;
+      border-radius: 6px;
+      border: 1.5px solid #3a3e62;
+      background-color: #0a0e2f;
+      color: #e0e8ff;
+      font-size: 1rem;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder {
+      color: #5e68a7;
+      font-weight: 400;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #757aff;
+      background-color: #121941;
+      box-shadow: 0 0 8px #5967ff99;
+    }
+
+    .verification-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .verification-input-group {
+      flex: 1;
+      position: relative;
+    }
+
+    .verification-code {
+      flex-shrink: 0;
+      display: inline-block;
+      background: #191b3f;
+      color: #d7dbe8;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 6px;
+      user-select: none;
+      cursor: default;
+      box-shadow: inset 0 0 8px #471b5a9c;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    button.login-btn {
+      width: 100%;
+      margin-top: 0.75rem;
+      background: linear-gradient(90deg, #cd3146, #651b33);
+      border: none;
+      border-radius: 6px;
+      padding: 12px 0;
+      font-weight: 600;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 12px #8d3b59cc;
+      transition: background 0.4s ease;
+    }
+
+    button.login-btn:hover,
+    button.login-btn:focus {
+      background: linear-gradient(90deg, #e1485f, #7a2346);
+      outline: none;
+    }
+
+    button.login-btn svg {
+      stroke: white;
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-[#0a0e2f]/80 backdrop-blur-md border-b border-gray-700 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Left: Logo -->
+        <div class="flex items-center">
+          <div class="bg-red-600 text-white font-bold text-xl px-2 py-1 rounded-sm">Lenovo</div>
+        </div>
+        <!-- Right: Pages + Button -->
+        <div class="flex items-center space-x-6">
+          <a href="#" class="text-gray-200 hover:text-white font-medium">Home</a>
+          <a href="#" class="text-gray-200 hover:text-white font-medium">About</a>
+          <a href="#" class="text-gray-200 hover:text-white font-medium">Support</a>
+          <a href="#" class="text-gray-200 hover:text-white font-medium">Contact</a>
+          <button
+            class="bg-gradient-to-r from-red-500 to-red-700 text-white px-4 py-2 rounded-lg shadow hover:from-red-600 hover:to-red-800">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="swirl-bg" aria-hidden="true"></div>
+
+  <div class="login-container mt-20" role="main" aria-label="Lenovo login form container">
+    <header class="header-logo" aria-label="Lenovo logo and Care of One text">
+      <div class="logo-box" aria-hidden="true">Lenovo</div>
+      <div class="logo-text">Care of One<span style="font-size: 0.7em; vertical-align: super;">™</span></div>
+    </header>
+    <h2>Lets Get Started!</h2>
+    <p class="subtitle">Sign in to your account to continue</p>
+    <form id="loginForm" novalidate autocomplete="off" aria-describedby="formInstructions">
+      <div class="input-group">
+        <label for="userid">User ID</label>
+        <svg class="input-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor"
+            d="M5 21v-2a4 4 0 014-4h6a4 4 0 014 4v2" />
+          <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <input type="text" id="userid" name="userid" placeholder="Your User ID" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <svg class="input-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2" />
+          <path stroke="currentColor" stroke-width="2" d="M12 7v4" stroke-linecap="round" />
+        </svg>
+        <input type="password" id="password" name="password" placeholder="Your Password" required />
+      </div>
+      <div class="input-group verification-wrapper">
+        <div class="verification-input-group">
+          <label for="verification">Verification Code</label>
+          <svg class="input-icon" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke="currentColor" stroke-width="2" d="M3 4h18v2H3V4zM4 6v14h16V6H4z" stroke-linecap="round" />
+            <circle cx="12" cy="14" r="3" stroke="currentColor" stroke-width="2" />
+          </svg>
+          <input type="text" id="verification" name="verification" placeholder="Enter Verification Code" required
+            autocomplete="off" />
+        </div>
+        <div class="verification-code" id="codeDisplay" aria-label="Verification code to enter" tabindex="0">Jd5ds</div>
+      </div>
+      <button class="login-btn" type="submit" aria-label="Login to Lenovo account">
+        <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke="currentColor" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Login
+      </button>
+    </form>
+  </div>
+
+  <script>
+    (() => {
+      const loginForm = document.getElementById('loginForm');
+      const codeDisplay = document.getElementById('codeDisplay');
+      const verificationInput = loginForm.querySelector('#verification');
+
+      function generateCode(length = 5) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+          result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+      }
+
+      function setVerificationCode() {
+        const newCode = generateCode(5);
+        codeDisplay.textContent = newCode;
+        codeDisplay.setAttribute('aria-label', `Verification code to enter: ${newCode}`);
+      }
+
+      setVerificationCode();
+
+      loginForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const enteredCode = verificationInput.value.trim();
+        if (!loginForm.userid.value.trim()) {
+          alert('Please enter your User ID.');
+          loginForm.userid.focus();
+          return;
+        }
+        if (!loginForm.password.value.trim()) {
+          alert('Please enter your Password.');
+          loginForm.password.focus();
+          return;
+        }
+        if (!enteredCode) {
+          alert('Please enter the Verification Code.');
+          verificationInput.focus();
+          return;
+        }
+        if (enteredCode !== codeDisplay.textContent) {
+          alert('Verification Code does not match. Please try again.');
+          verificationInput.select();
+          return;
+        }
+        alert('Login successful. (This is a demo alert.)');
+        loginForm.reset();
+        setVerificationCode();
+        loginForm.userid.focus();
+      });
+    })();
+  </script>
 </body>
+
 </html>
