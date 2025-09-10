@@ -6,7 +6,23 @@
 <title>Lenovo Login</title>
 <script type="module" >
       import ServiceNowChat from "https://lenovoco1temppov.service-now.com/uxasset/externals/now-requestor-chat-popover-app/index.jsdbx?sysparm_substitute=false";
-      var chat = new ServiceNowChat({ instance: "https://lenovoco1temppov.service-now.com/", });
+      var chat = new ServiceNowChat({
+  "instance": "https://lenovoco1temppov.service-now.com",
+
+  "branding": {
+    "bgColor": "#b92632",          // tall-poppy (button background)
+    "primaryColor": "#cccfd9",     // ghost (font color)
+    "hoverColor": "#681321",       // cherrywood (hover background)
+    "activeColor": "#160f48",      // violet (active background)
+    "openIcon": "chat-open-icon.svg",
+    "closeIcon": "chat-close-icon.svg"
+  },
+  "offsetX": 20,
+  "offsetY": 40,
+  "position": "right",
+  
+}
+);
     </script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
