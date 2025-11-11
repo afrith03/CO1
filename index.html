@@ -5,52 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lenovo Login</title>
-  <script type="module">
-    //https://lenovoco1temppov.service-now.com/$sn-va-web-client-app.do?sysparm_branding_key=care_of_one%E2%84%A2&sysparm_discoverable=true&sysparm_global_context_profile=e13840cf77d53110569156391e5a99ba&sysparm_global_preview_debug=true&sysparm_nowassist=true&sysparm_skip_load_history=true
-    import ServiceNowChat from "https://lenovoco1temppov.service-now.com/uxasset/externals/now-requestor-chat-popover-app/index.jsdbx?sysparm_substitute=false";
-    var chat = new ServiceNowChat({
-      "instance": "https://lenovoco1temppov.service-now.com",
-
-      "branding": {
-        "bgColor": "#b92632",          // tall-poppy (button background)
-        "primaryColor": "#cccfd9",     // ghost (font color)
-        "hoverColor": "#681321",       // cherrywood (hover background)
-        "activeColor": "#160f48",      // violet (active background)
-      },
-    }
-    );
-  </script>
-<!-- 
-<script>
-  (function () {
-    const SN_INSTANCE = 'https://lenovoco1temppov.service-now.com';
-    const RETURN_URL = 'https://co-1.vercel.app'; // the page you are on
-    const ALLOWED_ORIGIN = SN_INSTANCE; // only trust messages from your SN instance
-
-    window.addEventListener('message', function (e) {
-      // 1) Security: only handle messages from your SN instance
-      if (e.origin !== ALLOWED_ORIGIN) return;
-
-      const data = e.data || {};
-      const loginUrl =
-        SN_INSTANCE +
-        '/sn_va_web_client_login.do?sysparm_redirect_uri=' +
-        encodeURIComponent(RETURN_URL);
-
-      // 2) Session created but not authenticated -> force login
-      if (data.type === 'SESSION_CREATED' && data.authenticated === false) {
-        window.location.href = loginUrl;
-        return;
-      }
-
-      // 3) Platform logged out under the client -> re-login
-      if (data.type === 'SESSION_LOGGED_OUT') {
-        window.location.href = loginUrl;
-        return;
-      }
-    });
-  })();
-</script> -->
 
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -342,59 +296,6 @@
     </form>
   </div>
 
-  <script>
-    (() => {
-      const loginForm = document.getElementById('loginForm');
-      const codeDisplay = document.getElementById('codeDisplay');
-      const verificationInput = loginForm.querySelector('#verification');
-
-      function generateCode(length = 5) {
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = '';
-        for (let i = 0; i < length; i++) {
-          result += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return result;
-      }
-
-      function setVerificationCode() {
-        const newCode = generateCode(5);
-        codeDisplay.textContent = newCode;
-        codeDisplay.setAttribute('aria-label', `Verification code to enter: ${newCode}`);
-      }
-
-      setVerificationCode();
-
-      loginForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const enteredCode = verificationInput.value.trim();
-        if (!loginForm.userid.value.trim()) {
-          alert('Please enter your User ID.');
-          loginForm.userid.focus();
-          return;
-        }
-        if (!loginForm.password.value.trim()) {
-          alert('Please enter your Password.');
-          loginForm.password.focus();
-          return;
-        }
-        if (!enteredCode) {
-          alert('Please enter the Verification Code.');
-          verificationInput.focus();
-          return;
-        }
-        if (enteredCode !== codeDisplay.textContent) {
-          alert('Verification Code does not match. Please try again.');
-          verificationInput.select();
-          return;
-        }
-        alert('Login successful. (This is a demo alert.)');
-        loginForm.reset();
-        setVerificationCode();
-        loginForm.userid.focus();
-      });
-    })();
-  </script>
 </body>
 
 </html>
