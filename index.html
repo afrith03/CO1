@@ -7,16 +7,29 @@
   <title>Lenovo Login</title>
 
   <script src="https://lenovoeaasdev.service-now.com/scripts/sn_csm_ec.js?v=5.6"></script>
-<script>
-SN_CSM_EC.init({
-	moduleID: "https://lenovoeaasdev.service-now.com/#9303da4f0f0532906ed72cf300d1b2dc",
-	loadFeature: SN_CSM_EC.loadEMFeature()
-});
-</script>
+  <script>
+    SN_CSM_EC.init({
+      moduleID: "https://lenovoeaasdev.service-now.com/#9303da4f0f0532906ed72cf300d1b2dc",
+      loadFeature: SN_CSM_EC.loadEMFeature()
+    });
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+
+    .ecEmbedWrapper.dockIn {
+      height: 85vh;
+      width: 80%;
+      /* bottom: 115px; */
+      /* TOP: 25%; */
+      max-height: calc(100% - 115px);
+      /* right: 20%; */
+      left: 10%;
+      /* transform: translate(-0%, 0%); */
+    }
+    
 
     body {
       font-family: 'Poppins', sans-serif;
